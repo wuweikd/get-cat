@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
-require('./user')
-
+require('./user.models')
+require('./animal.models')
+require('./article.models')
 const mongodbConfig = {
     host: '127.0.0.1',
     database: 'getCat',

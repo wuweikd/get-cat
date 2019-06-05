@@ -1,8 +1,6 @@
 const jwt = require('jsonwebtoken')
-
-const secret = 'wuwei'
-const expiresIn =  365 * 86400 // 过期时间（s）
-
+const globalConfig = require('../public/javascripts/config/global.config')
+const { secret, expiresIn } = globalConfig.jwt
 exports.sign = (user) => {
     const token = jwt.sign({
         email : user.email,
@@ -11,4 +9,7 @@ exports.sign = (user) => {
     return token
 }
 
-exports.verify = (token) => {}
+exports.verify = (token) => {
+    const decoded = jwt.verify(token, secret)
+    return decoded
+}
