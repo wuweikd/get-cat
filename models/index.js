@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 require('./user.models')
 require('./animal.models')
 require('./article.models')
+
 const mongodbConfig = {
     host: '127.0.0.1',
     database: 'getCat',
@@ -9,8 +10,6 @@ const mongodbConfig = {
     user: '',
     pass: '',
 }
-
-const User = mongoose.model('User')
 const mongoUrl = `mongodb://${mongodbConfig.host}:${mongodbConfig.port}/${mongodbConfig.database}`
 
 mongoose.connection.openUri(mongoUrl, {

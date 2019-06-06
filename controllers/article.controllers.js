@@ -5,7 +5,6 @@ const Article = mongoose.model('Article')
 
 /* 查询所有文章 */
 exports.getArticles = async (req, res, next) => {
-    console.log(req)
     const {
         page = 1,
         limit = 10,
@@ -84,6 +83,9 @@ exports.getArticles = async (req, res, next) => {
 exports.postArticle = async (req, res, next) => {
     let { body } = req
     try {
+        body.animals = res.locals.animalsId
+        body.user = res.locals.user.userId
+        console.log(body.user)
         body = await new Article(body).save()
         res.json({
             success: true,
@@ -92,7 +94,7 @@ exports.postArticle = async (req, res, next) => {
     } catch (e) {
         res.json({
             success: false,
-            message: '保存失败',
+            message: 'article保存失败',
             e
         })
     }
