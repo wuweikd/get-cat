@@ -1,8 +1,7 @@
 var express = require('express');
 var router = express.Router();
-const user = require('../controllers/user.controllers')
+const user = require('../controllers/user.controller')
 const check = require('../middleware/check.middleware')
-/* GET users listing. */
 router
     .post('/login',
         user.login)

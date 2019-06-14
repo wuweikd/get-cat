@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const article = require('../controllers/article.controllers')
-const animal = require('../controllers/animal.controllers')
+const article = require('../controllers/article.controller')
+const animal = require('../controllers/animal.controller')
 const check = require('../middleware/check.middleware')
 
 router.post('/getArticles', article.getArticles)

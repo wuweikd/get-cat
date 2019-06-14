@@ -16,7 +16,6 @@ exports.auth = (name) => (req, res, next) => {
         res.locals.user = userInfo || {}
         next()
     } catch (e) {
-        res.clearCookie(name)
         res.json({
             success: false,
             message: 'token 无效',

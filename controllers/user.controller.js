@@ -3,7 +3,6 @@
 const mongoose = require('mongoose')
 const User = mongoose.model('User')
 const token = require('../utils/token.util')
-const globalConfig = require('../public/javascripts/config/global.config')
 /* 登录 */
 exports.login = async (req, res, next) => {
     const { body } = req
@@ -13,17 +12,7 @@ exports.login = async (req, res, next) => {
             password: body.password
         }).exec()
         if (user) {
-            /*
-            * 1.获取token
-            * 2.存放于cookie中
-            * */
             const t = token.sign(user)
-            // res.cookie('token', t, {
-            //     domain: 'http://10.0.3.7:8080',
-            //     path: '/',
-            //     maxAge: globalConfig.jwt.expiresIn * 1000,
-            //     httpOnly: true
-            // })
             res.json({
                 success: true,
                 data: {

@@ -14,6 +14,9 @@ const ArticleSchema = new Schema({
     content: {
         type: String,
     },
+    imgs: [{
+        type: String
+    }],
     views: {
         type: Number,
         default: 0
